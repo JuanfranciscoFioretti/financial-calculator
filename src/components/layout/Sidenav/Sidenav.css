@@ -1,0 +1,27 @@
+.sidebar-toggle {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+  margin-right: 2%;
+}
+
+.sidebar-toggle.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.main-content.blur-sm {
+  filter: blur(4px);
+}
+
+.main-content.blur-none {
+  filter: none;
+}

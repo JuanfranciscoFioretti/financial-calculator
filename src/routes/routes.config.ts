@@ -43,8 +43,8 @@ export const routes: Route[] = [
     name: 'Ratio Calculator'
   },
   {
-    path: '/conversion',
-    component: lazy(() => import('./../features/conversion/Conversion')),
-    name: 'Unit Conversion'
+    path: '/yield',
+    component: lazy(() => import('../features/yield/Yield')),
+    name: 'Yield Calculator'
   }
 ];

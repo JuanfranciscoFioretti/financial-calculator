@@ -1,5 +1,5 @@
 import React from 'react';
-import './Savings.css'; // Rename accordingly
+import './Yield.css'; // Rename the file according to the feature's purpose
 import BaseCalculator from '../../components/common/Calculator/Calculator';
 
 type FieldValue = string | number;
@@ -26,10 +26,9 @@ interface SelectField extends BaseField {
 
 type CalculatorField = NumberField | SelectField;
 
-const SavingsCalculator: React.FC = () => {
+const YieldCalculator: React.FC = () => {
   const [values, setValues] = React.useState({
-    initialSavings: 0,
-    monthlySavings: 0,
+    principal: 0,
     rate: 0,
     years: '5',
   });
@@ -39,24 +38,16 @@ const SavingsCalculator: React.FC = () => {
   const fields: CalculatorField[] = [
     {
       type: 'number',
-      name: 'initialSavings',
-      label: 'Initial Savings',
-      placeholder: 'Enter initial savings amount',
+      name: 'principal',
+      label: 'Principal Amount',
+      placeholder: 'Enter principal amount',
       min: 0,
-      value: values.initialSavings,
-    },
-    {
-      type: 'number',
-      name: 'monthlySavings',
-      label: 'Monthly Savings',
-      placeholder: 'Enter monthly savings',
-      min: 0,
-      value: values.monthlySavings,
+      value: values.principal,
     },
     {
       type: 'number',
       name: 'rate',
-      label: 'Annual Interest Rate (%)',
+      label: 'Annual Return Rate (%)',
       placeholder: 'Enter rate',
       min: 0,
       max: 100,
@@ -66,12 +57,11 @@ const SavingsCalculator: React.FC = () => {
     {
       type: 'select',
       name: 'years',
-      label: 'Savings Period (Years)',
+      label: 'Time Period (Years)',
       options: [
         { value: '5', label: '5 years' },
         { value: '10', label: '10 years' },
         { value: '15', label: '15 years' },
-        { value: '20', label: '20 years' },
       ],
       value: values.years,
     },
@@ -84,38 +74,33 @@ const SavingsCalculator: React.FC = () => {
     }));
   };
 
-  const calculateSavings = () => {
-    const { initialSavings, monthlySavings, rate, years } = values;
+  const calculateYield = () => {
+    const { principal, rate, years } = values;
     const time = parseInt(years);
-    const monthlyRate = rate / 100 / 12;
-    const totalMonths = time * 12;
+    const annualRate = rate / 100;
 
-    // Future Value Calculation: FV = P(1 + r)^n + M[((1 + r)^n - 1) / r]
-    const futureValue =
-      initialSavings * Math.pow(1 + monthlyRate, totalMonths) +
-      (monthlySavings * (Math.pow(1 + monthlyRate, totalMonths) - 1)) / monthlyRate;
-
-    setResult(futureValue);
+    const totalYield = principal * Math.pow(1 + annualRate, time);
+    setResult(totalYield);
   };
 
   return (
     <div className="feature-calculator-container">
-      <h2 className="calculator-title">Savings Calculator</h2>
+      <h2 className="calculator-title">Yield Calculator</h2>
       <div className="calculator-content">
         <BaseCalculator
-          title="Savings Calculator"
+          title="Yield Calculator"
           fields={fields}
-          onCalculate={calculateSavings}
+          onCalculate={calculateYield}
           onFieldChange={handleFieldChange}
           results={
             result !== null ? (
               <div className="results">
-                <h3>Future Value of Savings:</h3>
+                <h3>Total Yield:</h3>
                 <p>${result.toFixed(2)}</p>
               </div>
             ) : (
               <div className="results">
-                <h3>Future Value of Savings:</h3>
+                <h3>Total Yield:</h3>
                 <p>Please fill the fields and calculate.</p>
               </div>
             )
@@ -126,4 +111,4 @@ const SavingsCalculator: React.FC = () => {
   );
 };
 
-export default SavingsCalculator;
+export default YieldCalculator;

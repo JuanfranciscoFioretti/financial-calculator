@@ -50,21 +50,6 @@ const LoadingSpinner: React.FC = () => (
   </div>
 );
 
-// const CalculatorSkeleton: React.FC = () => (
-//   <div className="animate-pulse bg-white rounded-xl shadow-lg p-6 max-w-md w-full">
-//     <div className="h-7 bg-gray-200 rounded-md w-3/4 mb-6"></div>
-//     <div className="space-y-4">
-//       {[1, 2, 3].map((i) => (
-//         <div key={i}>
-//           <div className="h-4 bg-gray-200 rounded w-1/4 mb-2"></div>
-//           <div className="h-10 bg-gray-200 rounded-md w-full"></div>
-//         </div>
-//       ))}
-//       <div className="h-10 bg-gray-200 rounded-md w-full mt-6"></div>
-//       <div className="h-20 bg-gray-200 rounded-md w-full mt-4"></div>
-//     </div>
-//   </div>
-// );
 
 const BaseCalculator: React.FC<CalculatorProps> = ({
   title = "Calculator",
@@ -76,15 +61,25 @@ const BaseCalculator: React.FC<CalculatorProps> = ({
 }) => {
   const handleInputChange = (field: CalculatorField, inputValue: string) => {
     let value: FieldValue;
-    
+  
     if (field.type === 'number') {
-      value = inputValue === '' ? 0 : Number(inputValue);
+      // Si el inputValue es "0" y el usuario ingresa otro número, reemplaza el "0"
+      if (inputValue === '0') {
+        value = '';
+      } else if (inputValue.startsWith('0') && inputValue.length > 1) {
+        value = Number(inputValue.replace(/^0+/, '')); // Quita ceros iniciales
+      } else {
+        value = Number(inputValue);
+      }
     } else {
       value = inputValue;
     }
-    
+  
     onFieldChange(field.name, value);
   };
+  
+
+  
 
   return (
 
@@ -96,73 +91,71 @@ const BaseCalculator: React.FC<CalculatorProps> = ({
         </div>
         
         <form 
-  onSubmit={(e) => {
-    e.preventDefault();
-    onCalculate();
-  }}
-  className="calculator-content"
->
-  {fields.map((field) => (
-    <div key={field.name} className="calculator-field">
-      <label htmlFor={field.name} className="text-sm font-medium text-gray-700">
-        {field.label}
-      </label>
-      {field.type === 'select' ? (
-        <select
-          id={field.name}
-          name={field.name}
-          value={field.value}
-          onChange={(e) => handleInputChange(field, e.target.value)}
-          className="w-full"
+          onSubmit={(e) => {
+            e.preventDefault();
+            onCalculate();
+          }}
+          className="calculator-content"
         >
-          {field.options.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
+          {fields.map((field) => (
+            <div key={field.name} className="calculator-field">
+              <label htmlFor={field.name} className="text-sm font-medium text-gray-700">
+                {field.label}
+              </label>
+              {field.type === 'select' ? (
+                <select
+                  id={field.name}
+                  name={field.name}
+                  value={field.value}
+                  onChange={(e) => handleInputChange(field, e.target.value)}
+                  className="w-full"
+                >
+                  {field.options.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <input
+                  type={field.type}
+                  id={field.name}
+                  name={field.name}
+                  value={field.value === 0 ? '' : field.value}
+                  placeholder={field.placeholder}
+                  min={field.type === 'number' ? field.min : undefined}
+                  max={field.type === 'number' ? field.max : undefined}
+                  step={field.type === 'number' ? field.step : undefined}
+                  onChange={(e) => handleInputChange(field, e.target.value)}
+                  className="w-full"
+                />
+              )}
+            </div>
           ))}
-        </select>
-      ) : (
-        <input
-          type={field.type}
-          id={field.name}
-          name={field.name}
-          value={field.value}
-          placeholder={field.placeholder}
-          min={field.type === 'number' ? field.min : undefined}
-          max={field.type === 'number' ? field.max : undefined}
-          step={field.type === 'number' ? field.step : undefined}
-          onChange={(e) => handleInputChange(field, e.target.value)}
-          className="w-full"
-        />
-      )}
+
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="calculator-button"
+          >
+            {isLoading ? (
+              <span className="flex items-center justify-center">
+                <LoadingSpinner />
+                <span className="ml-2">Calculating...</span>
+              </span>
+            ) : (
+              'Calculate'
+            )}
+          </button>
+        </form>
+
+        {results && (
+          <div className="calculator-results">
+            {results}
+          </div>
+        )}
+      </Suspense>
     </div>
-  ))}
-
-  <button
-    type="submit"
-    disabled={isLoading}
-    className="calculator-button"
-  >
-    {isLoading ? (
-      <span className="flex items-center justify-center">
-        <LoadingSpinner />
-        <span className="ml-2">Calculating...</span>
-      </span>
-    ) : (
-      'Calculate'
-    )}
-  </button>
-</form>
-
-{results && (
-  <div className="calculator-results">
-    {results}
-  </div>
-)}
-
-
-    </Suspense>
-      </div>
   );
   
 

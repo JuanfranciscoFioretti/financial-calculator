@@ -6,13 +6,13 @@ import './Sidenav.css';
 const calculators = [
   { path: '/compound-interest', name: 'Compound Interest', icon: Icons.Trending },
   { path: '/savings', name: 'Savings Calculator', icon: Icons.Piggy },
-  { path: '/currency', name: 'Currency Converter', icon: Icons.Dollar },
+  { path: '/currency', name: 'Currency Converter', icon: Icons.Exchange },
   { path: '/percentage', name: 'Percentage Calculator', icon: Icons.Percent },
   { path: '/loan', name: 'Loan Calculator', icon: Icons.Calculator },
   { path: '/investment', name: 'Investment Planner', icon: Icons.Target },
   { path: '/time-value', name: 'Time Value Calculator', icon: Icons.Time },
   { path: '/ratio', name: 'Ratio Calculator', icon: Icons.Scale },
-  { path: '/conversion', name: 'Unit Converter', icon: Icons.Exchange }
+  { path: '/yield', name: 'Yield Calculator', icon: Icons.Dollar }
 ];
 
 interface SidenavProps {

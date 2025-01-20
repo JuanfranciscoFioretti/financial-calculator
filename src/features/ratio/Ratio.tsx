@@ -1,5 +1,5 @@
 import React from 'react';
-import './Ratio.css'; // Renombrar si es necesario
+import './Ratio.css';
 import BaseCalculator from '../../components/common/Calculator/Calculator';
 
 type FieldValue = string | number;
@@ -77,7 +77,6 @@ const RatioCalculator: React.FC = () => {
 
   return (
     <div className="feature-calculator-container">
-      {/* <h2 className="calculator-title">Ratio Calculator</h2> */}
       <div className="calculator-content">
         <BaseCalculator
           title="Ratio Calculator"

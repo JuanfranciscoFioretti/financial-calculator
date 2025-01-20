@@ -1,5 +1,5 @@
 import React from 'react';
-import './TimeValue.css'; // Rename accordingly
+import './TimeValue.css';
 import BaseCalculator from '../../components/common/Calculator/Calculator';
 
 type FieldValue = string | number;
@@ -105,7 +105,6 @@ const TimeValueCalculator: React.FC = () => {
 
   return (
     <div className="feature-calculator-container">
-      {/* <h2 className="calculator-title">Time Value Calculator</h2> */}
       <div className="calculator-content">
         <BaseCalculator
           title="Time Value Calculator"

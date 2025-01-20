@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # financial-calculator
 Financial calculator suite built with React. Includes tools like compound interest calculator, currency converter, percentage calculator, and more. Designed to be responsive, intuitive, and modular. This project is built using **React JS**, **TypeScript**, and **CSS**. The application provides various financial calculators, allowing users to compute results for tasks such as percentage calculations, compound interest, and loan planning. The development prioritizes reusability, user experience, and basic security principles.
 
@@ -6,7 +5,6 @@ The application demonstrates modern web development practices, including a clean
 
 ---
 
-=======
 
 ### Features
 

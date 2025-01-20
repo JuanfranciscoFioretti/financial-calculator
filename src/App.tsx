@@ -12,13 +12,9 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div className="">
+      <div>
         <Sidenav isOpen={isOpen} toggleSidenav={toggleSidenav}/>
-        <main 
-        className="main-content"
-        // className={`main-content ${isOpen ? '' : 'sidebar-closed'}`}
-        
-        >
+        <main className="main-content">
           <Suspense fallback={<CalculatorSkeleton />}>
             <Routes>
               <Route path="/" element={<Navigate to="/compound-interest" replace />} />

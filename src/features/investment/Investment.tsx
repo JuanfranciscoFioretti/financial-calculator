@@ -100,7 +100,6 @@ const InvestmentCalculator: React.FC = () => {
 
   return (
     <div className="feature-calculator-container">
-      {/* <h2 className="calculator-title">Investment Calculator</h2> */}
       <div className="calculator-content">
         <BaseCalculator
           title="Investment Calculator"

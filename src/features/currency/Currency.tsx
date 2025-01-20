@@ -107,7 +107,6 @@ const Conversion: React.FC = () => {
 
   return (
     <div className="feature-calculator-container">
-      {/* <h2 className="calculator-title">Currency Conversion Calculator</h2> */}
       <div className="calculator-content">
         <BaseCalculator
           title="Currency Converter"

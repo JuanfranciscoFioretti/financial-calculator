@@ -1,5 +1,5 @@
 import React from 'react';
-import './Yield.css'; // Rename the file according to the feature's purpose
+import './Yield.css';
 import BaseCalculator from '../../components/common/Calculator/Calculator';
 
 type FieldValue = string | number;
@@ -85,7 +85,6 @@ const YieldCalculator: React.FC = () => {
 
   return (
     <div className="feature-calculator-container">
-      {/* <h2 className="calculator-title">Yield Calculator</h2> */}
       <div className="calculator-content">
         <BaseCalculator
           title="Yield Calculator"

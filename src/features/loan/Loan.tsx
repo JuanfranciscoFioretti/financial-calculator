@@ -1,5 +1,5 @@
 import React from 'react';
-import './Loan.css'; // Rename accordingly
+import './Loan.css';
 import BaseCalculator from '../../components/common/Calculator/Calculator';
 
 type FieldValue = string | number;
@@ -95,7 +95,6 @@ const LoanCalculator: React.FC = () => {
 
   return (
     <div className="feature-calculator-container">
-      {/* <h2 className="calculator-title">Loan Calculator</h2> */}
       <div className="calculator-content">
         <BaseCalculator
           title="Loan Calculator"

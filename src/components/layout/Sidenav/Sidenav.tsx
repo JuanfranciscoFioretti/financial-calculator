@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { NavLink } from 'react-router-dom';
 import Icons from '../../common/Icons/Icons';
 import './Sidenav.css';
+import SidebarSkeleton from '../../common/Skeleton/SidebarSkeleton';
 
 const calculators = [
   { path: '/compound-interest', name: 'Compound Interest', icon: Icons.Trending },
@@ -39,42 +40,44 @@ const Sidenav: React.FC<SidenavProps> = ({ isOpen, toggleSidenav }) => {
 
   return (
     <>
-      {!isOpen && isCollapsible && (
-        <div className="overlay" onClick={toggleSidenav}>
-          <button 
-            className="sidebar-toggle" 
-            onClick={toggleSidenav}
-            style={{ transition: 'opacity 1s ease-in-out', opacity: isOpen ? 0 : 1 }}
-          >
-            ☰ Menu
-          </button>
-        </div>
-      )}
+      <Suspense fallback={<SidebarSkeleton />}>
+        {!isOpen && isCollapsible && (
+          <div className="overlay" onClick={toggleSidenav}>
+            <button 
+              className="sidebar-toggle" 
+              onClick={toggleSidenav}
+              style={{ transition: 'opacity 1s ease-in-out', opacity: isOpen ? 0 : 1 }}
+            >
+              ☰ Menu
+            </button>
+          </div>
+        )}
 
-      <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
-        <div className="sidebar-header">
-          <h1 className="sidebar-title">Finance Tools</h1>
-          <p className="sidebar-subtitle">Your financial calculator suite</p>
-        </div>
-        <nav>
-          <ul className="nav-list">
-            {calculators.map(({ path, name, icon: Icon }) => (
-              <li key={path} className="nav-item">
-                <NavLink
-                  to={path}
-                  className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                  onClick={toggleSidenav}
-                >
-                  <span className="nav-icon">
-                    <Icon />
-                  </span>
-                  <span className="nav-text">{name}</span>
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </aside>
+        <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
+          <div className="sidebar-header">
+            <h1 className="sidebar-title">Finance Tools</h1>
+            <p className="sidebar-subtitle">Your financial calculator suite</p>
+          </div>
+          <nav>
+            <ul className="nav-list">
+              {calculators.map(({ path, name, icon: Icon }) => (
+                <li key={path} className="nav-item">
+                  <NavLink
+                    to={path}
+                    className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                    onClick={toggleSidenav}
+                  >
+                    <span className="nav-icon">
+                      <Icon />
+                    </span>
+                    <span className="nav-text">{name}</span>
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+      </Suspense>
     </>
   );
 };

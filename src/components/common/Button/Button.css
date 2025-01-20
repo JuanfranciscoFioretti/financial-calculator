@@ -1,4 +1,3 @@
-/* Button.css: Styles for the Button component */
 .btn-primary {
     background-color: var(--primary-color);
     color: var(--neutral-white);
@@ -9,6 +8,6 @@
   }
   
   .btn-primary:hover {
-    background-color: #1557b0; /* Darker primary */
+    background-color: #1557b0;
   }
   

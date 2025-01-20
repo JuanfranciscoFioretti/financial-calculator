@@ -84,8 +84,8 @@ const BaseCalculator: React.FC<CalculatorProps> = ({
   return (
 
     
-      <div className="calculator-container">
     <Suspense fallback={<CalculatorSkeleton />}>
+      <div className="calculator-container">
         <div className="calculator-header">
           <h2 className="calculator-title">{title}</h2>
         </div>
@@ -99,7 +99,7 @@ const BaseCalculator: React.FC<CalculatorProps> = ({
         >
           {fields.map((field) => (
             <div key={field.name} className="calculator-field">
-              <label htmlFor={field.name} className="text-sm font-medium text-gray-700">
+              <label htmlFor={field.name} className="input-label text-sm font-medium text-gray-700">
                 {field.label}
               </label>
               {field.type === 'select' ? (
@@ -154,8 +154,8 @@ const BaseCalculator: React.FC<CalculatorProps> = ({
             {results}
           </div>
         )}
-      </Suspense>
-    </div>
+      </div>
+    </Suspense>
   );
   
 

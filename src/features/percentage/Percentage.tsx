@@ -64,7 +64,7 @@ const PercentageCalculator: React.FC = () => {
 
   return (
     <div className="feature-calculator-container">
-      <h2 className="calculator-title">Percentage Calculator</h2>
+      {/* <h2 className="calculator-title">Percentage Calculator</h2> */}
       <div className="calculator-content">
         <BaseCalculator
           title="Percentage Calculator"
@@ -74,13 +74,11 @@ const PercentageCalculator: React.FC = () => {
           results={
             result !== null ? (
               <div className="results">
-                <h3>Result:</h3>
-                <p>{`${values.percentage}% of ${values.base} is ${result.toFixed(2)}`}</p>
+                <p><strong>{`${values.percentage}% of ${values.base} is ${result.toFixed(2)}`}</strong></p>
               </div>
             ) : (
               <div className="results">
-                <h3>Result:</h3>
-                <p>Please fill the fields and calculate.</p>
+                <p>Enter valid values to see the result</p>
               </div>
             )
           }

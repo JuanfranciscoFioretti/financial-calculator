@@ -96,8 +96,8 @@ const CompoundInterest: React.FC = () => {
 
   return (
     <div className="feature-calculator-container">
-      <h2 className="calculator-title">Compound Interest Calculator</h2>
       <div className="calculator-content">
+      {/* <h2 className="calculator-title">Compound Interest Calculator</h2> */}
         <BaseCalculator
           title="Compound Interest"
           fields={fields}
@@ -105,7 +105,7 @@ const CompoundInterest: React.FC = () => {
           onFieldChange={handleFieldChange}
           results={
             <div className="calculator-result">
-              {result ? <p>{result}</p> : <p>Result will appear here</p>}
+              {result ? <p><strong>{result}</strong></p> : <p>Enter valid values to see the result</p>}
             </div>
           }
         />

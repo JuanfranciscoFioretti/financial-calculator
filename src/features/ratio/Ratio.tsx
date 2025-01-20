@@ -77,7 +77,7 @@ const RatioCalculator: React.FC = () => {
 
   return (
     <div className="feature-calculator-container">
-      <h2 className="calculator-title">Ratio Calculator</h2>
+      {/* <h2 className="calculator-title">Ratio Calculator</h2> */}
       <div className="calculator-content">
         <BaseCalculator
           title="Ratio Calculator"
@@ -87,15 +87,11 @@ const RatioCalculator: React.FC = () => {
           results={
             result !== null ? (
               <div className="results">
-                <h3>Result:</h3>
-                <p>
-                  The simplified ratio is: <strong>{result}</strong>
-                </p>
+                <p>The simplified ratio is: <strong>{result}</strong></p>
               </div>
             ) : (
               <div className="results">
-                <h3>Result:</h3>
-                <p>Please fill in the fields and click Calculate.</p>
+                <p>Enter valid values to see the result</p>
               </div>
             )
           }

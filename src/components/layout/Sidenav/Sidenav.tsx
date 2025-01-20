@@ -23,13 +23,13 @@ interface SidenavProps {
 const Sidenav: React.FC<SidenavProps> = ({ isOpen, toggleSidenav }) => {
   const [isCollapsible, setIsCollapsible] = useState(false);
 
-  // Detecta si el menú es plegable o fijo según el ancho de la pantalla
+  
   useEffect(() => {
     const handleResize = () => {
       setIsCollapsible(window.innerWidth < 1024);
     };
 
-    handleResize(); // Llama al cargar
+    handleResize(); // Calls when loading the component
     window.addEventListener('resize', handleResize);
 
     return () => {
@@ -39,7 +39,6 @@ const Sidenav: React.FC<SidenavProps> = ({ isOpen, toggleSidenav }) => {
 
   return (
     <>
-      {/* Overlay y botón de menú */}
       {!isOpen && isCollapsible && (
         <div className="overlay" onClick={toggleSidenav}>
           <button 
@@ -52,7 +51,6 @@ const Sidenav: React.FC<SidenavProps> = ({ isOpen, toggleSidenav }) => {
         </div>
       )}
 
-      {/* Sidebar */}
       <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
           <h1 className="sidebar-title">Finance Tools</h1>
@@ -77,21 +75,6 @@ const Sidenav: React.FC<SidenavProps> = ({ isOpen, toggleSidenav }) => {
           </ul>
         </nav>
       </aside>
-
-      {/* Contenido borroso */}
-      {/* <div
-        className={`main-content ${isOpen && isCollapsible ? 'blur-sm' : ''}`}
-        style={{
-          transition: 'filter 0.3s ease',
-          filter: isOpen && isCollapsible ? 'blur(5px)' : 'none'
-        }}
-      > */}
-        {/* El contenido principal */}
-        {/* <main>
-          <h1>Welcome to the Calculator Suite</h1>
-          <p>Select a tool from the menu to get started.</p>
-        </main>
-      </div> */}
     </>
   );
 };

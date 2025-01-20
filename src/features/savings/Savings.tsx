@@ -100,7 +100,7 @@ const SavingsCalculator: React.FC = () => {
 
   return (
     <div className="feature-calculator-container">
-      <h2 className="calculator-title">Savings Calculator</h2>
+      {/* <h2 className="calculator-title">Savings Calculator</h2> */}
       <div className="calculator-content">
         <BaseCalculator
           title="Savings Calculator"
@@ -110,13 +110,11 @@ const SavingsCalculator: React.FC = () => {
           results={
             result !== null ? (
               <div className="results">
-                <h3>Future Value of Savings:</h3>
-                <p>${result.toFixed(2)}</p>
+                <p><strong>${result.toFixed(2)}</strong></p>
               </div>
             ) : (
               <div className="results">
-                <h3>Future Value of Savings:</h3>
-                <p>Please fill the fields and calculate.</p>
+                <p>Enter valid values to see the result</p>
               </div>
             )
           }

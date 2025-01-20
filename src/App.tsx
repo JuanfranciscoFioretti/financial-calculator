@@ -12,11 +12,11 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div className="app-container">
+      <div className="">
         <Sidenav isOpen={isOpen} toggleSidenav={toggleSidenav}/>
         <main 
-        // className="main-content"
-        className={`main-content ${isOpen ? 'blurred' : ''} h-full w-full flex items-center justify-center`}
+        className="main-content"
+        // className={`main-content ${isOpen ? '' : 'sidebar-closed'}`}
         
         >
           <Suspense fallback={<CalculatorSkeleton />}>
@@ -38,38 +38,3 @@ const App = () => {
 };
 
 export default App;
-
-// import { Suspense, LazyExoticComponent } from 'react';
-// import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-// import Sidebar from './components/layout/Sidebar/Sidebar';
-// import CalculatorSkeleton from './components/common/CalculatorSkeleton/CalculatorSkeleton';
-// import { routes } from './routes/routes.config';
-// import './styles/base/main.css';
-
-// export interface AppRoute {
-//   path: string;
-//   component: LazyExoticComponent<() => JSX.Element>;
-//   exact?: boolean;
-//   redirectTo?: string;
-// }
-
-// const App = () => {
-//   return (
-//     <BrowserRouter>
-//       <Sidebar />
-//       <Suspense fallback={<CalculatorSkeleton />}>
-//         <Routes>
-//           {routes.map((route, index) => (
-//             route.redirectTo ? (
-//               <Route key={index} path={route.path} element={<Navigate to={route.redirectTo} />} />
-//             ) : (
-//               <Route key={index} path={route.path} element={<route.component />} />
-//             )
-//           ))}
-//         </Routes>
-//       </Suspense>
-//     </BrowserRouter>
-//   );
-// };
-
-// export default App;

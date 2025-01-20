@@ -1,13 +1,14 @@
 :root {
   /* Update color palette for light theme */
-  --color-bg-main: #f8f9fa;
+  --color-bg-main: #faf8f8;
+  --color-bg-secondary: #d8d8d8dc;
   --color-bg-sidebar: #ffffff;
   --color-text-primary: #2c3e50;
   --color-text-secondary: #81878bdc;
   --color-primary: #3498db;
   --color-primary-hover: #2980b9;
   --color-border: #e9ecef;
-  --color-link-hover: #f1f4f8;
+  --color-link-hover: #e4e8ee;
   
   /* Other variables remain the same */
   --spacing-xs: 0.25rem;
@@ -33,19 +34,8 @@ body {
   position: relative;
 }
 
-/* .app-container.blurred {
-  filter: blur(4px);
-  opacity: 0.7;
-  pointer-events: none;
-} */
-
-.main-content {
-  flex: 1;
-  margin-left: 280px;
-  padding: var(--spacing-lg);
-  min-height: 100vh;
-  background-color: var(--color-bg-main);
-  transition: filter 0.3s ease, opacity 0.3s ease; /* Add opacity transition */
+.main-content.sidebar-open {
+  margin-left: 250px; /* Ajuste cuando el sidenav esté abierto */
 }
 
 .main-content.blurred {
@@ -71,7 +61,7 @@ body {
   left: 0;
   top: 0;
   overflow-y: auto;
-  box-shadow: 1px 0 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 0 2px rgba(65, 64, 64, 0.432);
 }
 
 .sidebar-header {
@@ -81,7 +71,7 @@ body {
 }
 
 .sidebar-title {
-  font-size: 1.25rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: var(--color-text-primary);
   margin: 0;
@@ -200,3 +190,4 @@ body {
 .sidebar::-webkit-scrollbar-thumb:hover {
   background-color: var(--color-text-secondary);
 }
+

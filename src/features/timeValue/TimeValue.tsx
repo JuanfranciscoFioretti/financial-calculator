@@ -105,7 +105,7 @@ const TimeValueCalculator: React.FC = () => {
 
   return (
     <div className="feature-calculator-container">
-      <h2 className="calculator-title">Time Value Calculator</h2>
+      {/* <h2 className="calculator-title">Time Value Calculator</h2> */}
       <div className="calculator-content">
         <BaseCalculator
           title="Time Value Calculator"
@@ -115,14 +115,10 @@ const TimeValueCalculator: React.FC = () => {
           results={
             result !== null ? (
               <div className="results">
-                <h3>Result:</h3>
-                <p>
-                  The calculated value is: <strong>${result.toFixed(2)}</strong>
-                </p>
+                <p><strong>${result.toFixed(2)}</strong></p>
               </div>
             ) : (
               <div className="results">
-                <h3>Result:</h3>
                 <p>Please fill in the fields and click Calculate.</p>
               </div>
             )

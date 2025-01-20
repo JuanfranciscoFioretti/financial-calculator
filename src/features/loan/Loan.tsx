@@ -95,7 +95,7 @@ const LoanCalculator: React.FC = () => {
 
   return (
     <div className="feature-calculator-container">
-      <h2 className="calculator-title">Loan Calculator</h2>
+      {/* <h2 className="calculator-title">Loan Calculator</h2> */}
       <div className="calculator-content">
         <BaseCalculator
           title="Loan Calculator"
@@ -105,15 +105,11 @@ const LoanCalculator: React.FC = () => {
           results={
             result !== null ? (
               <div className="results">
-                <h3>Result:</h3>
-                <p>
-                  Your monthly payment is: <strong>${result.toFixed(2)}</strong>
-                </p>
+                <p><strong>${result.toFixed(2)}</strong></p>
               </div>
             ) : (
               <div className="results">
-                <h3>Result:</h3>
-                <p>Please fill in the fields and click Calculate.</p>
+                <p>Enter valid values to see the result</p>
               </div>
             )
           }

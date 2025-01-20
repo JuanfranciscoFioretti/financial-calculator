@@ -107,7 +107,7 @@ const Conversion: React.FC = () => {
 
   return (
     <div className="feature-calculator-container">
-      <h2 className="calculator-title">Currency Conversion Calculator</h2>
+      {/* <h2 className="calculator-title">Currency Conversion Calculator</h2> */}
       <div className="calculator-content">
         <BaseCalculator
           title="Currency Converter"
@@ -116,11 +116,11 @@ const Conversion: React.FC = () => {
           onFieldChange={handleFieldChange}
           results={
             <div>
-              <h3>Conversion Result:</h3>
               <p>
                 {values.result
-                  ? `${values.amount} ${values.fromCurrency} = ${values.result.toFixed(2)} ${values.toCurrency}`
-                  : 'Enter valid values to see the result.'}
+                  // ? <p><strong>{`${values.amount} ${values.fromCurrency} = ${values.result.toFixed(2)} ${values.toCurrency}`}</strong></p> SHOWING FIRST AND SECOND CURRENCY
+                  ? <p><strong>{`${values.result.toFixed(2)} ${values.toCurrency}`}</strong></p>
+                  : <p>Enter valid values to see the result</p>}
               </p>
             </div>
           }
